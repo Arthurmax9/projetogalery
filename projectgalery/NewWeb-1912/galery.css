@@ -1,0 +1,52 @@
+.galery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+figure {
+  position: relative;
+  margin: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none; /* Para que a overlay não interaja com eventos do mouse */
+}
+
+.overlay-content {
+  opacity: 1; /* Inicia com opacidade 1 para estar visível inicialmente */
+  transition: opacity 0.3s ease-in-out;
+}
+
+figure:hover .overlay-content {
+  opacity: 5; /* Quando o mouse não está sobre a figura, a opacidade se torna 0 */
+}
+
+figure.active .overlay {
+  opacity: 1; /* Overlay visível quando a imagem estiver expandida */
+}
+
+figure:hover img {
+  transform: scale(1.1);
+}
